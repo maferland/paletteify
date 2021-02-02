@@ -47,7 +47,10 @@ export default function Home() {
 
         <form onSubmit={generate}>
           <label>URL</label>
-          <input onChange={(event) => setUrl(event.target.value)}></input>
+          <input
+            value={url}
+            onChange={(event) => setUrl(event.target.value)}
+          ></input>
           <button>Go</button>
         </form>
 
