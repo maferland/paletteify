@@ -1,4 +1,9 @@
 import Head from 'next/head'
+import styled from '@emotion/styled'
+
+const Title = styled.h1`
+  color: #220a0a;
+`
 
 export default function Home() {
   const year = new Date().getFullYear().toString()
@@ -10,7 +15,7 @@ export default function Home() {
       </Head>
 
       <main>
-        <h1>Themeify</h1>
+        <Title>Themeify</Title>
       </main>
 
       <footer>
