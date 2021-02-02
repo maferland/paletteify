@@ -7,15 +7,13 @@ const Title = styled.h1`
   color: #220a0a;
 `
 
-type Color = {
+export type Color = {
   name: string
-  r: number
-  g: number
-  b: number
+  code: string
 }
 
 export default function Home() {
-  const [url, setUrl] = React.useState<string>('')
+  const [url, setUrl] = React.useState<string>('https://www.capdesk.com')
   const [palette, setPalette] = React.useState<Color[]>([])
   const [loading, setLoading] = React.useState<boolean>(false)
   const year = new Date().getFullYear().toString()
@@ -32,13 +30,7 @@ export default function Home() {
       }),
     })
       .then((r) => r.json())
-      .then(({palette: _palette}) => {
-        const palette = Object.keys(_palette).map((key) => {
-          const {
-            rgb: [r, g, b],
-          } = _palette[key]
-          return {name: key, r, g, b}
-        })
+      .then(({palette}) => {
         setPalette(palette)
         setLoading(false)
       })
