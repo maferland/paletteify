@@ -1,7 +1,7 @@
 {
   "name": "themeify",
   "version": "1.0.0",
-  "description": "🏛 This not the greatest repo in the world, this is a template",
+  "description": "🎨 Generate Slack theme",
   "main": "index.js",
   "scripts": {
     "dev": "next dev",
@@ -12,9 +12,8 @@
   "dependencies": {
     "@emotion/react": "^11.1.4",
     "@emotion/styled": "^11.0.0",
+    "capture-website": "^1.2.8",
     "next": "10.0.6",
-    "node-fetch": "^2.6.1",
-    "node-html-to-image": "^3.1.0",
     "node-vibrant": "^3.2.1-alpha.1",
     "react": "17.0.1",
     "react-dom": "17.0.1"
