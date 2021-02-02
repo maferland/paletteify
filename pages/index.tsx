@@ -38,12 +38,12 @@ export default function Home() {
   return (
     <div>
       <Head>
-        <title>Themeify</title>
+        <title>Paletteify</title>
         <link rel="icon" href="/favicon.svg" />
       </Head>
 
       <main>
-        <Title>Themeify</Title>
+        <Title>Paletteify</Title>
 
         <form onSubmit={generate}>
           <label>URL</label>

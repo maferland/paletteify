@@ -1,5 +1,5 @@
 {
-  "name": "themeify",
+  "name": "Paletteify",
   "version": "1.0.0",
   "description": "🎨 Generate Slack theme",
   "main": "index.js",
@@ -26,9 +26,9 @@
   "author": "Marc-Antoine Ferland <maferland@hey.com> (https://maferland.com)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/maferland/themeify/issues"
+    "url": "https://github.com/maferland/paletteify/issues"
   },
-  "homepage": "https://github.com/maferland/themeify#readme",
+  "homepage": "https://github.com/maferland/paletteify#readme",
   "devDependencies": {
     "@types/node": "^14.14.22",
     "@types/react": "^17.0.0",

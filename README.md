@@ -1,5 +1,5 @@
 <div align="center">
-<h1>🎨 @maferland/themeify</h1>
+<h1>🎨 @maferland/paletteify</h1>
 
 <p>Generate Slack theme</p>
 </div>
