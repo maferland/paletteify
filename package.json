@@ -1,10 +1,17 @@
 {
-  "name": "template",
+  "name": "themeify",
   "version": "1.0.0",
   "description": "🏛 This not the greatest repo in the world, this is a template",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "next": "10.0.6",
+    "react": "17.0.1",
+    "react-dom": "17.0.1"
   },
   "repository": {
     "type": "git",
@@ -14,7 +21,7 @@
   "author": "Marc-Antoine Ferland <maferland@hey.com> (https://maferland.com)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/maferland/template/issues"
+    "url": "https://github.com/maferland/themeify/issues"
   },
-  "homepage": "https://github.com/maferland/template#readme"
+  "homepage": "https://github.com/maferland/themeify#readme"
 }

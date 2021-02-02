@@ -1,7 +1,7 @@
 <div align="center">
-<h1>🏛 @maferland/template</h1>
+<h1>🎨 @maferland/themeify</h1>
 
-<p>This not the greatest repo in the world, this is just a template </p>
+<p>Generate Slack theme</p>
 </div>
 
 ---
@@ -14,12 +14,6 @@
 - [LICENSE](#license)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
-## How to use
-
-```
-// urr durr yarn dev
-```
 
 ## Author
 
