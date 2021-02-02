@@ -1,7 +1,7 @@
 <div align="center">
 <h1>🎨 @maferland/paletteify</h1>
 
-<p>Generate Slack theme</p>
+<p>Generate color palette from URL </p>
 </div>
 
 ---

@@ -1,7 +1,7 @@
 {
   "name": "Paletteify",
   "version": "1.0.0",
-  "description": "🎨 Generate Slack theme",
+  "description": "🎨 Generate color palette from URL ",
   "main": "index.js",
   "scripts": {
     "dev": "next dev",
