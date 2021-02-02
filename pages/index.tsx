@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import styled from '@emotion/styled'
 import * as React from 'react'
-import {SyntheticEvent} from 'react'
+import Palette from '../components/palette'
 
 const Title = styled.h1`
   color: #220a0a;
@@ -54,7 +54,7 @@ export default function Home() {
           <button>Go</button>
         </form>
 
-        {palette && <code>{JSON.stringify(palette)}</code>}
+        <Palette palette={palette} />
       </main>
 
       <footer>
