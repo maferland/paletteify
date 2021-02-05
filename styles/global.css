@@ -1,0 +1,17 @@
+:root {
+  --red: #e63946;
+  --bg-color: #f1faee;
+  --light-blue: #a8dadc;
+  --blue: #457b9d;
+  --dark-blue: #1d3557;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
