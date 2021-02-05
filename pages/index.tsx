@@ -1,5 +1,6 @@
 import * as React from 'react'
 import Footer from '../components/footer'
+import Layout from '../components/layout'
 import Palette from '../components/palette'
 import UrlForm from '../components/url-form'
 
@@ -99,12 +100,11 @@ export default function Home() {
   }
 
   return (
-    <div>
-      <main>
+    <Layout>
+      <>
         <UrlForm onSubmitUrl={generatePalette} />
         <Palette palette={palette} />
-      </main>
-      <Footer />
-    </div>
+      </>
+    </Layout>
   )
 }
