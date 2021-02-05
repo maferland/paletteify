@@ -1,13 +1,7 @@
-import Head from 'next/head'
-import styled from '@emotion/styled'
 import * as React from 'react'
+import Footer from '../components/footer'
 import Palette from '../components/palette'
 import UrlForm from '../components/url-form'
-import Footer from '../components/footer'
-
-const Title = styled.h1`
-  color: #220a0a;
-`
 
 export type Color = {
   name: string
