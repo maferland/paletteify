@@ -3,6 +3,7 @@ import styled from '@emotion/styled'
 import * as React from 'react'
 import Palette from '../components/palette'
 import UrlForm from '../components/url-form'
+import Footer from '../components/footer'
 
 const Title = styled.h1`
   color: #220a0a;
@@ -94,7 +95,6 @@ const usePalette = (): [Color[], boolean, React.Dispatch<any>] => {
 
 export default function Home() {
   const [palette, loading, setUrl] = usePalette()
-  const year = new Date().getFullYear().toString()
 
   function generatePalette(url) {
     if (loading || !url) {
@@ -117,10 +117,7 @@ export default function Home() {
         <Palette palette={palette} />
       </main>
 
-      <footer>
-        © Built with &lt;3 by <a href="https://maferland.com">maferland</a> -{' '}
-        {year}
-      </footer>
+      <Footer />
     </div>
   )
 }
