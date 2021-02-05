@@ -9,8 +9,8 @@ class MyDocument extends Document {
   render() {
     return (
       <Html>
+        <title>Paletteify</title>
         <Head>
-          <title>Paletteify</title>
           <link rel="icon" href="/favicon.svg" />
         </Head>
         <body>
