@@ -106,17 +106,10 @@ export default function Home() {
 
   return (
     <div>
-      <Head>
-        <title>Paletteify</title>
-        <link rel="icon" href="/favicon.svg" />
-      </Head>
-
       <main>
-        <Title>Paletteify</Title>
         <UrlForm onSubmitUrl={generatePalette} />
         <Palette palette={palette} />
       </main>
-
       <Footer />
     </div>
   )
