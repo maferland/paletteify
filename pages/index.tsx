@@ -10,6 +10,7 @@ const Title = styled.h1`
   font-family: 'Grand Hotel', cursive;
   text-shadow: 5px 5px var(--dark-blue);
   letter-spacing: 1px;
+  margin-bottom: 0.25em;
 `
 
 const Container = styled.div`

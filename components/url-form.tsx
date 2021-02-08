@@ -1,4 +1,12 @@
+import styled from '@emotion/styled'
 import * as React from 'react'
+
+const FormContainer = styled.div`
+  border: 4px solid var(--mustard);
+  border-radius: 0.5em;
+  padding: 4em;
+  background-color: rgba(0, 0, 0, 0.2);
+`
 
 type UrlFormProps = {
   onSubmitUrl: (string) => unknown
@@ -22,10 +30,12 @@ export default function UrlForm({onSubmitUrl}: UrlFormProps) {
   const handleUrlChange = useInputChange(setUrl)
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>URL</label>
-      <input value={url} onChange={handleUrlChange}></input>
-      <button>Go</button>
-    </form>
+    <FormContainer>
+      <form onSubmit={handleSubmit}>
+        <label>URL</label>
+        <input value={url} onChange={handleUrlChange}></input>
+        <button>Go</button>
+      </form>
+    </FormContainer>
   )
 }
