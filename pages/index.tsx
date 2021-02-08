@@ -1,8 +1,22 @@
+import styled from '@emotion/styled'
 import * as React from 'react'
-import Footer from '../components/footer'
 import Layout from '../components/layout'
 import Palette from '../components/palette'
 import UrlForm from '../components/url-form'
+
+const Title = styled.h1`
+  color: #fff;
+  font-size: 8rem;
+  font-family: 'Grand Hotel', cursive;
+  text-shadow: 5px 5px var(--dark-blue);
+  letter-spacing: 1px;
+`
+
+const Container = styled.div`
+  max-width: 1200px;
+  width: 100%;
+  margin: auto;
+`
 
 export type Color = {
   name: string
@@ -101,10 +115,11 @@ export default function Home() {
 
   return (
     <Layout>
-      <>
+      <Container>
+        <Title>Paletteify</Title>
         <UrlForm onSubmitUrl={generatePalette} />
         <Palette palette={palette} />
-      </>
+      </Container>
     </Layout>
   )
 }

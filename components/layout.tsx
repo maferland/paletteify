@@ -6,8 +6,6 @@ type LayoutProps = {
 }
 
 const Page = styled.div`
-  background: var(--bg-color);
-  color: var(--dark-blue);
   display: flex;
   flex-direction: column;
   min-height: 100vh;

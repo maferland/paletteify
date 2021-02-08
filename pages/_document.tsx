@@ -11,6 +11,11 @@ class MyDocument extends Document {
       <Html>
         <title>Paletteify</title>
         <Head>
+          <link rel="preconnect" href="https://fonts.gstatic.com" />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Grand+Hotel&display=swap"
+            rel="stylesheet"
+          />
           <link rel="icon" href="/favicon.svg" />
         </Head>
         <body>
