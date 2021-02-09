@@ -79,10 +79,17 @@ type UrlFormProps = {
 const useInputChange = (setState) => {
   return (event) => {
     const {value} = event.target
-    setState(value.toLowerCase())
+    if (typeof value !== 'string') {
+      return
+    }
+    setState(
+      value
+        .replace(/^(https?:\/\/)?/, '')
+        .replace(/\/?$/, '')
+        .toLowerCase(),
+    )
   }
 }
-
 export default function UrlForm({onSubmitUrl}: UrlFormProps) {
   const [url, setUrl] = React.useState<string>('')
 
