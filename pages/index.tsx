@@ -10,12 +10,14 @@ const Title = styled.h1`
   font-family: 'Grand Hotel', cursive;
   text-shadow: 5px 5px var(--dark-blue);
   letter-spacing: 1px;
-  margin-bottom: 0.25em;
+  padding-top: 1em;
+  margin-bottom: -0.25em;
 `
 
 const Container = styled.div`
   max-width: 1200px;
-  width: 100%;
+  padding: 0 1em;
+  width: calc(100% - 2em);
   margin: auto;
 `
 
