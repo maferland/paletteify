@@ -13,7 +13,7 @@ class MyDocument extends Document {
         <Head>
           <link rel="preconnect" href="https://fonts.gstatic.com" />
           <link
-            href="https://fonts.googleapis.com/css2?family=Grand+Hotel&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Grand+Hotel&family=Roboto+Mono:wght@300&display=swap"
             rel="stylesheet"
           />
           <link rel="icon" href="/favicon.svg" />
