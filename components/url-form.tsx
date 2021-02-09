@@ -98,7 +98,7 @@ export default function UrlForm({onSubmitUrl}: UrlFormProps) {
       <Prefix>https://</Prefix>
       <Input
         name="URL"
-        pattern="[a-z0-9]+\.[a-z]+"
+        pattern="^[^ \x22]+\.[a-z]+$"
         aria-label="Type the website URL"
         value={url}
         onChange={handleUrlChange}
