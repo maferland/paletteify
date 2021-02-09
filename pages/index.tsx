@@ -80,7 +80,7 @@ const usePalette = (): [Color[], boolean, React.Dispatch<any>] => {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
-        url,
+        url: `https://${url}`,
       }),
     })
       .then((r) => r.json())
@@ -113,7 +113,7 @@ export default function Home() {
       return
     }
 
-    setUrl(url)
+    setUrl(url.toLowerCase())
   }
 
   return (

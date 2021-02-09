@@ -98,10 +98,12 @@ export default function UrlForm({onSubmitUrl}: UrlFormProps) {
       <Prefix>https://</Prefix>
       <Input
         name="URL"
+        pattern="[a-z0-9]+\.[a-z]+"
         aria-label="Type the website URL"
         value={url}
         onChange={handleUrlChange}
         placeholder="stripe.com"
+        required
       ></Input>
       <Button>Generate</Button>
     </Form>
