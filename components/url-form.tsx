@@ -1,5 +1,6 @@
 import styled from '@emotion/styled'
 import * as React from 'react'
+import Button, {ButtonContainer} from './button'
 
 const Input = styled.input`
   background-color: rgba(255, 255, 255, 0.2);
@@ -27,24 +28,7 @@ const Prefix = styled.div`
     display: none;
   }
 `
-const Button = styled.button`
-  border-top-right-radius: 0.2em;
-  border-bottom-right-radius: 0.2em;
-  outline: none;
-  box-shadow: none;
-  background: rgba(0, 0, 0, 0.9);
-  border: 4px solid transparent;
-  cursor: pointer;
 
-  @media (max-width: 800px) {
-    border-radius: 0.2em;
-    margin-top: 0.5em;
-  }
-
-  :hover {
-    border: 4px solid #596b7f;
-  }
-`
 const Form = styled.form`
   display: flex;
   flex-direction: row;
@@ -59,12 +43,14 @@ const Form = styled.form`
   @media (max-width: 800px) {
     padding: 1em;
     flex-wrap: wrap;
-    ${Button} {
+    button {
       width: 100%;
     }
   }
 
-  * {
+  ${Prefix},
+  ${Input},
+  ${ButtonContainer} {
     color: white;
     font-size: 2em;
     padding: 0.5em;
@@ -74,6 +60,7 @@ const Form = styled.form`
 
 type UrlFormProps = {
   onSubmitUrl: (string) => unknown
+  loading: boolean
 }
 
 const useInputChange = (setState) => {
@@ -90,7 +77,7 @@ const useInputChange = (setState) => {
     )
   }
 }
-export default function UrlForm({onSubmitUrl}: UrlFormProps) {
+export default function UrlForm({onSubmitUrl, loading}: UrlFormProps) {
   const [url, setUrl] = React.useState<string>('')
 
   function handleSubmit(event: React.FormEvent) {
@@ -112,7 +99,7 @@ export default function UrlForm({onSubmitUrl}: UrlFormProps) {
         placeholder="stripe.com"
         required
       ></Input>
-      <Button>Generate</Button>
+      <Button loading={loading}>Generate</Button>
     </Form>
   )
 }
