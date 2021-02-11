@@ -21,6 +21,14 @@ const Container = styled.div`
   margin: auto;
 `
 
+const Info = styled.div`
+  font-size: 1rem;
+  font-family: monospace;
+  margin: 0 auto;
+  color: #fff;
+  text-align: center;
+`
+
 export type Color = {
   name: string
   code: string
@@ -122,6 +130,10 @@ export default function Home() {
         <Title>Paletteify</Title>
         <UrlForm onSubmitUrl={generatePalette} loading={loading} />
         <Palette palette={palette} loading={loading} />
+        <Info>
+          <p>Generating a color palette can take a few seconds</p>
+          <p>Bear with us 🧸</p>
+        </Info>
       </Container>
     </Layout>
   )

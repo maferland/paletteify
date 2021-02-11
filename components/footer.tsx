@@ -4,7 +4,7 @@ const Container = styled.footer`
   text-align: center;
   color: white;
   font-family: monospace;
-  font-size: 1.5em;
+  font-size: 1rem;
   padding: 0.25em;
 
   a {
