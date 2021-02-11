@@ -9,17 +9,20 @@ const ButtonContainer = styled.button`
   box-shadow: none;
   background: rgba(0, 0, 0, 0.9);
   border: 4px solid transparent;
-  cursor: pointer;
 
   @media (max-width: 800px) {
     border-radius: 0.2em;
     margin-top: 0.5em;
   }
 
-  :hover {
+  :hover:not(:disabled) {
     border: 4px solid #596b7f;
   }
+  :disabled {
+    cursor: progress;
+  }
 `
+
 type ButtonProps = {
   children: React.ReactNode | string
   onClick?: () => any
