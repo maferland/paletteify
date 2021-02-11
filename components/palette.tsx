@@ -4,6 +4,11 @@ import * as React from 'react'
 
 type PaletteProps = {
   palette: Color[]
+  loading: boolean
+}
+
+type CellProps = {
+  loading?: boolean
 }
 
 type PaletteColorProps = {
@@ -24,7 +29,6 @@ const Cell = styled.div`
   justify-content: center;
   align-items: center;
   border-radius: 30%;
-  margin: 1em;
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
   cursor: pointer;
 
@@ -59,15 +63,45 @@ function PaletteColor({code}: PaletteColorProps) {
     )
   }
   return (
-    <Cell style={{background: code}} onClick={handleClick}>
-      <span>{text}</span>
-    </Cell>
+    <CellWrapper>
+      <Cell style={{background: code}} onClick={handleClick}>
+        <span>{text}</span>
+      </Cell>
+    </CellWrapper>
   )
 }
 
-export default function Palette({palette}: PaletteProps) {
+const GhostCell = styled(Cell)`
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+`
+
+const CellWrapper = styled.div((props: CellProps) => ({
+  animation: props.loading ? 'glow 1.5s ease-in infinite' : '',
+  border: '3px solid transparent',
+  borderRadius: '30%',
+}))
+
+function GhostColor({loading}: CellProps) {
+  return (
+    <CellWrapper loading={loading}>
+      <GhostCell style={{cursor: 'default'}}></GhostCell>
+    </CellWrapper>
+  )
+}
+
+export default function Palette({palette, loading}: PaletteProps) {
   if (palette.length === 0) {
-    return <span />
+    return (
+      <Grid>
+        {[0, 1, 2, 3, 4, 5].map((_, index) => (
+          <GhostColor key={index} loading={loading} />
+        ))}
+      </Grid>
+    )
   }
 
   return (

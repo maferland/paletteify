@@ -121,7 +121,7 @@ export default function Home() {
       <Container>
         <Title>Paletteify</Title>
         <UrlForm onSubmitUrl={generatePalette} loading={loading} />
-        <Palette palette={palette} />
+        <Palette palette={palette} loading={loading} />
       </Container>
     </Layout>
   )
