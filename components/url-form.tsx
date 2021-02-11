@@ -72,7 +72,7 @@ const useInputChange = (setState) => {
     setState(
       value
         .replace(/^(https?:\/\/)?/, '')
-        .replace(/\/?$/, '')
+        .replace(/\/\/$/, '/')
         .toLowerCase(),
     )
   }
@@ -82,7 +82,7 @@ export default function UrlForm({onSubmitUrl, loading}: UrlFormProps) {
 
   function handleSubmit(event: React.FormEvent) {
     event.preventDefault()
-    onSubmitUrl(url)
+    onSubmitUrl(url.replace(/\/$/, ''))
   }
 
   const handleUrlChange = useInputChange(setUrl)
@@ -92,7 +92,7 @@ export default function UrlForm({onSubmitUrl, loading}: UrlFormProps) {
       <Prefix>https://</Prefix>
       <Input
         name="URL"
-        pattern="^[^ \x22]+(\.[a-z]+)+$"
+        pattern="^[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$"
         aria-label="Type the website URL"
         value={url}
         onChange={handleUrlChange}
