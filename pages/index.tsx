@@ -106,7 +106,7 @@ const usePalette = (): [Color[], boolean, React.Dispatch<any>] => {
     fetchPalette,
     () => {
       setLoading(false)
-      toast(`Cannot generate palette for ${url}`)
+      toast(`Cannot generate palette for ${url} 😢`)
     },
   )
 
