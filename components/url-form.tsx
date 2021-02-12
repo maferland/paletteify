@@ -7,20 +7,8 @@ const Fieldset = styled.fieldset`
   flex: 1;
   border: none;
   background-color: rgba(255, 255, 255, 0.2);
-  position: relative;
   margin: 0;
   padding: 0;
-`
-
-const Error = styled.span`
-  color: var(--red);
-  position: absolute;
-  transform: translateY(100%);
-  bottom: 0;
-  left: 0;
-  height: 100%;
-  font-size: 1.3em;
-  padding: 13px;
 `
 
 const Input = styled.input`
@@ -84,7 +72,6 @@ const Form = styled.form`
 type UrlFormProps = {
   onSubmitUrl: (string) => unknown
   loading: boolean
-  error: string
 }
 
 const useInputChange = (setState) => {
@@ -101,7 +88,7 @@ const useInputChange = (setState) => {
     )
   }
 }
-export default function UrlForm({onSubmitUrl, loading, error}: UrlFormProps) {
+export default function UrlForm({onSubmitUrl, loading}: UrlFormProps) {
   const [url, setUrl] = React.useState<string>('')
 
   function handleSubmit(event: React.FormEvent) {
@@ -124,7 +111,6 @@ export default function UrlForm({onSubmitUrl, loading, error}: UrlFormProps) {
           placeholder="stripe.com"
           required
         ></Input>
-        <Error>{error}</Error>
       </Fieldset>
       <Button loading={loading}>Generate</Button>
     </Form>
