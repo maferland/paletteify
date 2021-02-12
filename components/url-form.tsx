@@ -2,11 +2,34 @@ import styled from '@emotion/styled'
 import * as React from 'react'
 import Button, {ButtonContainer} from './button'
 
+const Fieldset = styled.fieldset`
+  font-family: monospace;
+  flex: 1;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.2);
+  position: relative;
+  margin: 0;
+  padding: 0;
+`
+
+const Error = styled.span`
+  color: var(--red);
+  position: absolute;
+  transform: translateY(100%);
+  bottom: 0;
+  left: 0;
+  height: 100%;
+  font-size: 1.3em;
+  padding: 13px;
+`
+
 const Input = styled.input`
   background-color: rgba(255, 255, 255, 0.2);
   color: white;
   border: none;
-  flex: 1;
+  width: 100%;
+  height: 100%;
+
   @media (max-width: 800px) {
     border-top-right-radius: 0.2em;
     border-bottom-right-radius: 0.2em;
@@ -61,6 +84,7 @@ const Form = styled.form`
 type UrlFormProps = {
   onSubmitUrl: (string) => unknown
   loading: boolean
+  error: string
 }
 
 const useInputChange = (setState) => {
@@ -77,7 +101,7 @@ const useInputChange = (setState) => {
     )
   }
 }
-export default function UrlForm({onSubmitUrl, loading}: UrlFormProps) {
+export default function UrlForm({onSubmitUrl, loading, error}: UrlFormProps) {
   const [url, setUrl] = React.useState<string>('')
 
   function handleSubmit(event: React.FormEvent) {
@@ -90,15 +114,18 @@ export default function UrlForm({onSubmitUrl, loading}: UrlFormProps) {
   return (
     <Form onSubmit={handleSubmit}>
       <Prefix>https://</Prefix>
-      <Input
-        name="URL"
-        pattern="^[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$"
-        aria-label="Type the website URL"
-        value={url}
-        onChange={handleUrlChange}
-        placeholder="stripe.com"
-        required
-      ></Input>
+      <Fieldset>
+        <Input
+          name="URL"
+          pattern="^[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$"
+          aria-label="Type the website URL"
+          value={url}
+          onChange={handleUrlChange}
+          placeholder="stripe.com"
+          required
+        ></Input>
+        <Error>{error}</Error>
+      </Fieldset>
       <Button loading={loading}>Generate</Button>
     </Form>
   )

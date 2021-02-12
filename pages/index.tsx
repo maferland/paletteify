@@ -10,14 +10,13 @@ const Title = styled.h1`
   font-family: 'Grand Hotel', cursive;
   text-shadow: 5px 5px var(--dark-blue);
   letter-spacing: 1px;
-  padding-top: 1em;
+  padding-top: 32px;
   margin-bottom: -0.25em;
 `
 
 const Container = styled.div`
   max-width: 1200px;
   padding: 0 1em;
-  width: calc(100% - 2em);
   margin: auto;
 `
 
@@ -37,6 +36,7 @@ export type Color = {
 const usePoller = (
   pollUrl: string,
   handlePollCompleted: () => unknown,
+  handlePollError: (error: string) => unknown,
   wait: number = 5000,
 ) => {
   const [jobId, setJobId] = React.useState<string | undefined>()
@@ -56,7 +56,7 @@ const usePoller = (
     if (unmounted) {
       return
     }
-    const {state} = await fetch(`${pollUrl}${jobId}`, {
+    const {state, reason} = await fetch(`${pollUrl}${jobId}`, {
       method: 'GET',
       headers: {'Content-Type': 'application/json'},
     }).then((r) => r.json())
@@ -66,6 +66,7 @@ const usePoller = (
         handlePollCompleted()
         break
       case 'failed':
+        handlePollError(reason)
         break
       default:
         setTimeout(() => poll(), wait)
@@ -74,13 +75,18 @@ const usePoller = (
   return setJobId
 }
 
-const usePalette = (): [Color[], boolean, React.Dispatch<any>] => {
+const usePalette = (): [Color[], boolean, string, React.Dispatch<any>] => {
   const [url, setUrl] = React.useState<string>('')
   const [palette, setPalette] = React.useState<Color[]>([])
   const [loading, setLoading] = React.useState<boolean>(false)
+  const [error, setError] = React.useState<string>('zzz')
   const setJobId = usePoller(
     'https://paletteify-server.herokuapp.com/poll/',
     fetchPalette,
+    (error) => {
+      setError(`Something is preventing ${url} from being captured 😢`)
+      setLoading(false)
+    },
   )
 
   function fetchPalette() {
@@ -107,14 +113,15 @@ const usePalette = (): [Color[], boolean, React.Dispatch<any>] => {
     }
     setPalette([])
     setLoading(true)
+    setError('')
     fetchPalette()
   }, [url])
 
-  return [palette, loading, setUrl]
+  return [palette, loading, error, setUrl]
 }
 
 export default function Home() {
-  const [palette, loading, setUrl] = usePalette()
+  const [palette, loading, error, setUrl] = usePalette()
 
   function generatePalette(url) {
     if (loading || !url) {
@@ -128,7 +135,11 @@ export default function Home() {
     <Layout>
       <Container>
         <Title>Paletteify</Title>
-        <UrlForm onSubmitUrl={generatePalette} loading={loading} />
+        <UrlForm
+          onSubmitUrl={generatePalette}
+          loading={loading}
+          error={error}
+        />
         <Palette palette={palette} loading={loading} />
         <Info>
           <p>Generating a color palette can take a few seconds</p>
