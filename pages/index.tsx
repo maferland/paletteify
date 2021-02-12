@@ -33,10 +33,19 @@ export type Color = {
   code: string
 }
 
+enum JobState {
+  Completed = 'completed',
+  Failed = 'failed',
+}
+
+type JobResponse = {
+  state: JobState
+}
+
 const usePoller = (
   pollUrl: string,
   handlePollCompleted: () => unknown,
-  handlePollError: (error: string) => unknown,
+  handlePollError: () => unknown,
   wait: number = 5000,
 ) => {
   const [jobId, setJobId] = React.useState<string | undefined>()
@@ -56,17 +65,20 @@ const usePoller = (
     if (unmounted) {
       return
     }
-    const {state, reason} = await fetch(`${pollUrl}${jobId}`, {
+    const {state}: JobResponse = await fetch(`${pollUrl}${jobId}`, {
       method: 'GET',
       headers: {'Content-Type': 'application/json'},
-    }).then((r) => r.json())
+    }).then(
+      (r) => r.json(),
+      (_) => ({state: 'failed'}),
+    )
 
     switch (state) {
-      case 'completed':
+      case JobState.Completed:
         handlePollCompleted()
         break
-      case 'failed':
-        handlePollError(reason)
+      case JobState.Failed:
+        handlePollError()
         break
       default:
         setTimeout(() => poll(), wait)
@@ -79,11 +91,11 @@ const usePalette = (): [Color[], boolean, string, React.Dispatch<any>] => {
   const [url, setUrl] = React.useState<string>('')
   const [palette, setPalette] = React.useState<Color[]>([])
   const [loading, setLoading] = React.useState<boolean>(false)
-  const [error, setError] = React.useState<string>('zzz')
+  const [error, setError] = React.useState<string>('')
   const setJobId = usePoller(
     'https://paletteify-server.herokuapp.com/poll/',
     fetchPalette,
-    (error) => {
+    () => {
       setError(`Something is preventing ${url} from being captured 😢`)
       setLoading(false)
     },
