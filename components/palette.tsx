@@ -63,7 +63,7 @@ function PaletteColor({code}: PaletteColorProps) {
     )
   }
   return (
-    <CellWrapper loading={false}>
+    <CellWrapper>
       <Cell style={{background: code}} onClick={handleClick}>
         <span>{text}</span>
       </Cell>
