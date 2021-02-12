@@ -21,6 +21,10 @@ const Grid = styled.div`
   flex-wrap: wrap;
   justify-content: space-around;
   padding: 2em;
+
+  @media (max-width: 800px) {
+    padding: 1em 0;
+  }
 `
 const Cell = styled.div`
   height: 150px;
@@ -79,16 +83,18 @@ const GhostCell = styled(Cell)`
   border: 1px solid rgba(255, 255, 255, 0.18);
 `
 
-const CellWrapper = styled.div`
+const CellWrapper = styled.div<{animation?: string}>`
   border: 3px solid transparent;
   border-radius: 30%;
+  animation: ${(props) => props.animation || ''};
+  @media (max-width: 800px) {
+    margin: 0.5em 0;
+  }
 `
 
 function GhostColor({loading}: CellProps) {
   return (
-    <CellWrapper
-      style={{animation: loading ? 'glow 1.5s ease -in infinite' : undefined}}
-    >
+    <CellWrapper animation={loading ? 'glow 1.5s ease-in infinite' : 'unset'}>
       <GhostCell style={{cursor: 'default'}}></GhostCell>
     </CellWrapper>
   )
