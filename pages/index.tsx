@@ -21,7 +21,7 @@ const Container = styled.div`
 `
 
 const Info = styled.div`
-  font-size: 1rem;
+  font-size: 1.2rem;
   font-family: monospace;
   margin: 0 auto;
   color: #fff;
