@@ -8,7 +8,7 @@ type PaletteProps = {
 }
 
 type CellProps = {
-  loading?: boolean
+  loading: boolean
 }
 
 type PaletteColorProps = {
@@ -63,7 +63,7 @@ function PaletteColor({code}: PaletteColorProps) {
     )
   }
   return (
-    <CellWrapper>
+    <CellWrapper loading={false}>
       <Cell style={{background: code}} onClick={handleClick}>
         <span>{text}</span>
       </Cell>
@@ -79,15 +79,16 @@ const GhostCell = styled(Cell)`
   border: 1px solid rgba(255, 255, 255, 0.18);
 `
 
-const CellWrapper = styled.div((props: CellProps) => ({
-  animation: props.loading ? 'glow 1.5s ease-in infinite' : '',
-  border: '3px solid transparent',
-  borderRadius: '30%',
-}))
+const CellWrapper = styled.div`
+  border: 3px solid transparent;
+  border-radius: 30%;
+`
 
 function GhostColor({loading}: CellProps) {
   return (
-    <CellWrapper loading={loading}>
+    <CellWrapper
+      style={{animation: loading ? 'glow 1.5s ease -in infinite' : undefined}}
+    >
       <GhostCell style={{cursor: 'default'}}></GhostCell>
     </CellWrapper>
   )
