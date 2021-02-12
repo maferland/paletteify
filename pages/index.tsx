@@ -12,6 +12,10 @@ const Title = styled.h1`
   letter-spacing: 1px;
   padding-top: 32px;
   margin-bottom: -0.25em;
+
+  @media (max-width: 800px) {
+    font-size: 6rem;
+  }
 `
 
 const Container = styled.div`
