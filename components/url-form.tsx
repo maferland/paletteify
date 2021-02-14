@@ -104,7 +104,7 @@ export default function UrlForm({onSubmitUrl, loading}: UrlFormProps) {
       <Fieldset>
         <Input
           name="URL"
-          pattern="^[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?\s+$"
+          pattern="^[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?\s*$"
           aria-label="Type the website URL"
           value={url}
           onChange={handleUrlChange}

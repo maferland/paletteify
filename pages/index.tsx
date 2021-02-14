@@ -101,17 +101,13 @@ const usePalette = (): [Color[], boolean, React.Dispatch<any>] => {
   const [url, setUrl] = React.useState<string>('')
   const [palette, setPalette] = React.useState<Color[]>([])
   const [loading, setLoading] = React.useState<boolean>(false)
-  const setJobId = usePoller(
-    'https://paletteify-server.herokuapp.com/poll/',
-    fetchPalette,
-    () => {
-      setLoading(false)
-      toast(`Cannot generate palette for ${url} 😢`)
-    },
-  )
+  const setJobId = usePoller('localhost:5000/poll/', fetchPalette, () => {
+    setLoading(false)
+    toast(`Cannot generate palette for ${url} 😢`)
+  })
 
   function fetchPalette() {
-    fetch('https://paletteify-server.herokuapp.com/generate', {
+    fetch('localhost:5000/generate', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
