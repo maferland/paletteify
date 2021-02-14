@@ -5,6 +5,8 @@ import Layout from '../components/layout'
 import Palette from '../components/palette'
 import UrlForm from '../components/url-form'
 
+const API = process.env.API
+
 const Title = styled.h1`
   color: #fff;
   font-size: 8rem;
