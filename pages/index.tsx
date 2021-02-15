@@ -5,8 +5,6 @@ import Layout from '../components/layout'
 import Palette from '../components/palette'
 import UrlForm from '../components/url-form'
 
-const API = process.env.API
-
 const Title = styled.h1`
   color: #fff;
   font-size: 8rem;
@@ -77,7 +75,7 @@ const usePoller = (
     if (!mounted) {
       return
     }
-    const {state}: JobResponse = await fetch(`${pollUrl}${jobId}`, {
+    const {state}: JobResponse = await fetch(`${pollUrl}/${jobId}`, {
       method: 'GET',
       headers: {'Content-Type': 'application/json'},
     }).then(
@@ -103,17 +101,13 @@ const usePalette = (): [Color[], boolean, React.Dispatch<any>] => {
   const [url, setUrl] = React.useState<string>('')
   const [palette, setPalette] = React.useState<Color[]>([])
   const [loading, setLoading] = React.useState<boolean>(false)
-  const setJobId = usePoller(
-    'https://paletteify-server.herokuapp.com/poll/',
-    fetchPalette,
-    () => {
-      setLoading(false)
-      toast(`Cannot generate palette for ${url} 😢`)
-    },
-  )
+  const setJobId = usePoller(`/api/poll`, fetchPalette, () => {
+    setLoading(false)
+    toast(`Cannot generate palette for ${url} 😢`)
+  })
 
   function fetchPalette() {
-    fetch('https://paletteify-server.herokuapp.com/generate', {
+    fetch(`/api/generate`, {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
